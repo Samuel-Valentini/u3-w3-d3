@@ -1,17 +1,32 @@
-import { useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Favorites = () => {
+    const dispatch = useDispatch();
     const arrayOfFavorites = useSelector((curr) => curr.favorite.companies);
     console.log(arrayOfFavorites);
     return (
         <div>
-            <h1 className="text-danger">Favorites</h1>
-            {[...new Set(arrayOfFavorites)].map((company, i) => {
+            <h1 className="text-danger text-center">Favorites</h1>
+            {[...new Set(arrayOfFavorites)].map((company) => {
                 return (
-                    <h3 key={company}>
-                        <Link to={`/${company}`}>{company}</Link>
-                    </h3>
+                    <>
+                        <div className="d-flex justify-content-between w-50 mx-auto my-2">
+                            <h3 key={company}>
+                                <Link to={`/${company}`}>{company}</Link>
+                            </h3>
+                            <Button
+                                onClick={() => {
+                                    dispatch({
+                                        type: "REMOVE_FROM_FAVORITES",
+                                        payload: company,
+                                    });
+                                }}>
+                                Remove
+                            </Button>
+                        </div>
+                    </>
                 );
             })}
         </div>
