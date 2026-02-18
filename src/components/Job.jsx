@@ -42,7 +42,7 @@ const Job = ({ data }) => {
                                 payload: data.company_name,
                             });
                         }}>
-                        Remove
+                        Rimuovi dai preferiti
                     </Button>
                 </Col>
             </Row>
