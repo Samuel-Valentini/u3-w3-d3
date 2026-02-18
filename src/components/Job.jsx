@@ -1,14 +1,16 @@
 import { Row, Col, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Job = ({ data }) => {
     const dispatch = useDispatch();
+    const arrayOfFavorites = useSelector((curr) => curr.favorite.companies);
+    const isFavorite = arrayOfFavorites.includes(data.company_name);
 
     return (
         <>
             <Row
-                className="mx-0 mt-3 p-3"
+                className={`mx-0 mt-3 p-3 ${isFavorite ? "bg-warning" : ""}`}
                 style={{ border: "1px solid #00000033", borderRadius: 4 }}>
                 <Col xs={3}>
                     <Link to={`/${data.company_name}`}>
