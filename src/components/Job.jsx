@@ -22,10 +22,10 @@ const Job = ({ data }) => {
                         {data.title}
                     </a>
                 </Col>
-                <Col>
+                <Col className="text-center">
                     <Button
                         variant="info"
-                        className="text-white"
+                        className="text-white mb-1"
                         onClick={() => {
                             dispatch({
                                 type: "ADD_TO_FAVORITES",
@@ -33,6 +33,16 @@ const Job = ({ data }) => {
                             });
                         }}>
                         Aggiungi ai preferiti
+                    </Button>
+                    <Button
+                        variant="danger"
+                        onClick={() => {
+                            dispatch({
+                                type: "REMOVE_FROM_FAVORITES",
+                                payload: data.company_name,
+                            });
+                        }}>
+                        Remove
                     </Button>
                 </Col>
             </Row>
