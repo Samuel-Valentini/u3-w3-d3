@@ -6,17 +6,22 @@ const initialState = {
 
 const mainReducer = (currentState = initialState, action) => {
     switch (action.type) {
-        case "ADD_TO_FAVORITES":
-            return {
-                ...currentState,
-                favorite: {
-                    ...currentState.favorite,
-                    companies: [
-                        ...currentState.favorite.companies,
-                        action.payload,
-                    ],
-                },
-            };
+        case "ADD_TO_FAVORITES": {
+            const company = action.payload;
+            if (currentState.favorite.companies.includes(company)) {
+                return currentState;
+            } else
+                return {
+                    ...currentState,
+                    favorite: {
+                        ...currentState.favorite,
+                        companies: [
+                            ...currentState.favorite.companies,
+                            company,
+                        ],
+                    },
+                };
+        }
 
         case "REMOVE_FROM_FAVORITES":
             return {
