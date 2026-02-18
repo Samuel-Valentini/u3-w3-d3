@@ -6,7 +6,7 @@ const Favorites = () => {
     return (
         <div>
             <h1 className="text-danger">Favorites</h1>
-            {arrayOfFavorites.map((company, i) => {
+            {[...new Set(arrayOfFavorites)].map((company, i) => {
                 return <h3 key={i}>{company}</h3>;
             })}
         </div>
