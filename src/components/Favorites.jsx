@@ -8,6 +8,11 @@ const Favorites = () => {
     console.log(arrayOfFavorites);
     return (
         <div>
+            <div className="w-50 mx-auto ">
+                <Link to={"/"} className="text-danger">
+                    Go to Home
+                </Link>
+            </div>
             <h1 className="text-danger text-center">Favorites</h1>
             {[...new Set(arrayOfFavorites)].map((company) => {
                 return (
